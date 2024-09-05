@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/components/bottom_navigation_bar.dart';
 import 'package:shop_app/pages/cart_page.dart';
+import 'package:shop_app/pages/intro_page.dart';
 import 'package:shop_app/pages/shop_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,6 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -35,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             },
             icon: const Icon(
               Icons.menu,
-              color: Color.fromARGB(255, 97, 97, 97),
+              color: Colors.white,
             ),
           ),
         ),
@@ -44,41 +46,42 @@ class _HomePageState extends State<HomePage> {
         onTabChanged: (index) => navigateBottomBar(index),
       ),
       drawer: Drawer(
+        backgroundColor: Colors.black,
         child: Column(
           children: [
-            DrawerHeader(
-              padding: EdgeInsets.all(30.0),
+            Container(
+              padding: const EdgeInsets.all(60.0),
               child: Image.asset(
                 'assets/images/rog.png',
                 color: Colors.red,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: ListTile(
                 leading: Icon(
                   Icons.home,
-                  color: Colors.grey[700],
+                  color: Colors.white,
                 ),
                 title: Text(
                   "Home",
                   style: TextStyle(
-                    color: Colors.grey[700],
+                    color: Colors.white,
                   ),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: ListTile(
                 leading: Icon(
                   Icons.info,
-                  color: Colors.grey[700],
+                  color: Colors.white,
                 ),
                 title: Text(
                   "About",
                   style: TextStyle(
-                    color: Colors.grey[700],
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -87,14 +90,20 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: ListTile(
-                leading: Icon(
-                  Icons.logout,
-                  color: Colors.grey[700],
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const IntroPage(),
+                  ),
                 ),
-                title: Text(
+                leading: const Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                ),
+                title: const Text(
                   "Logout",
                   style: TextStyle(
-                    color: Colors.grey[700],
+                    color: Colors.white,
                   ),
                 ),
               ),

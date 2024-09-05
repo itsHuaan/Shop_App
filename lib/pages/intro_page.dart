@@ -7,6 +7,7 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,8 +26,9 @@ class IntroPage extends StatelessWidget {
             const Text(
               "Republic of Gamers",
               style: TextStyle(
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
+                fontSize: 40,
               ),
             ),
             const SizedBox(
@@ -36,7 +38,7 @@ class IntroPage extends StatelessWidget {
               "For Those Who Dare",
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 14,
+                fontSize: 15,
               ),
             ),
             const SizedBox(
@@ -53,7 +55,7 @@ class IntroPage extends StatelessWidget {
                 padding: const EdgeInsets.all(15.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[900],
+                    color: Colors.red,
                     borderRadius: BorderRadius.circular(15),
                   ),
                   padding: const EdgeInsets.all(25),
