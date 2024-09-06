@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/models/product.dart';
 
 class CardItems extends StatefulWidget {
-  Product product;
-  CardItems({
+  final Product product;
+  const CardItems({
     super.key,
     required this.product,
   });
@@ -13,6 +15,7 @@ class CardItems extends StatefulWidget {
 }
 
 class _CardItemsState extends State<CardItems> {
+  void removeItem() => Provider.of<Cart>(context, listen: false).removeFromCart(widget.product);
   @override
   Widget build(BuildContext context) {
     String price = widget.product.price.toString();
@@ -26,11 +29,11 @@ class _CardItemsState extends State<CardItems> {
         leading: Image.asset(widget.product.imagePath),
         title: Text(
           widget.product.name,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Text('\$$price'),
         trailing: IconButton(
-          onPressed: () {},
+          onPressed: removeItem,
           icon: const Icon(
             Icons.delete,
             color: Colors.red,
