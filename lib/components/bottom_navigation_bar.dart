@@ -13,6 +13,8 @@ class MyBottomNavBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: GNav(
+        padding: const EdgeInsets.all(15.0),
+        gap: 10,
         color: Colors.white,
         activeColor: Colors.white,
         tabBackgroundColor: Colors.red,
