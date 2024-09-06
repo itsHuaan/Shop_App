@@ -3,9 +3,11 @@ import 'package:shop_app/models/product.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;
+  final void Function()? AddingToCart;
   const ProductTile({
     super.key,
     required this.product,
+    required this.AddingToCart,
   });
 
   @override
@@ -49,19 +51,22 @@ class ProductTile extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Container(
-                width: 50,
-                height: 50,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15),
+              GestureDetector(
+                onTap: AddingToCart,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                    color: Colors.red,
                   ),
-                  color: Colors.red,
-                ),
-                child: const Icon(
-                  Icons.add,
-                  color: Colors.white,
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],
