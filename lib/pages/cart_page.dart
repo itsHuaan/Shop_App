@@ -10,33 +10,40 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(
-      builder: (context, value, child) => Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            const Text(
-              "My Cart",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+      builder: (context, value, child) => value.getUserCart().isNotEmpty
+          ? Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  const Text(
+                    "My Cart",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: value.getUserCart().length,
+                      itemBuilder: (context, index) {
+                        Product product = value.getUserCart()[index];
+                        return CardItems(product: product);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            )
+          : const Center(
+              child: Text(
+                "You haven't added anything to cart",
+                style: TextStyle(color: Colors.white),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: value.getUserCart().length,
-                itemBuilder: (context, index) {
-                  Product product = value.getUserCart()[index];
-                  return CardItems(product: product);
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
