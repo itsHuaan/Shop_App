@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/components/bottom_navigation_bar.dart';
+import 'package:shop_app/pages/about_page.dart';
 import 'package:shop_app/pages/cart_page.dart';
 import 'package:shop_app/pages/intro_page.dart';
 import 'package:shop_app/pages/shop_page.dart';
@@ -71,14 +72,20 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10.0),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
               child: ListTile(
-                leading: Icon(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AboutPage(),
+                  ),
+                ),
+                leading: const Icon(
                   Icons.info,
                   color: Colors.white,
                 ),
-                title: Text(
+                title: const Text(
                   "About",
                   style: TextStyle(
                     color: Colors.white,
